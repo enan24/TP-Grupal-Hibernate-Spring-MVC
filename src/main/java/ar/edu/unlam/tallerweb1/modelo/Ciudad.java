@@ -6,47 +6,43 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ciudad {
 @Id @GeneratedValue
 
-    private Long id;
 	private String nombre;
-	private String ubicacionGeografica;
-	private String pais;
 	
 	@ManyToOne (cascade= {CascadeType.ALL},fetch = FetchType.LAZY)
-	private Pais idPais;
+	private Pais pais;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Pais getIdPais() {
-		return idPais;
-	}
-	public void setIdPais(Pais idPais) {
-		this.idPais = idPais;
-	}
+	@OneToOne (cascade= {CascadeType.ALL},fetch = FetchType.LAZY)
+	private Ubicacion ubicacionGeografica;
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getUbicacionGeografica() {
-		return ubicacionGeografica;
-	}
-	public void setUbicacionGeografica(String ubicacionGeografica) {
-		this.ubicacionGeografica = ubicacionGeografica;
-	}
-	public String getPais() {
+
+	public Pais getPais() {
 		return pais;
 	}
-	public void setPais(String pais) {
+
+	public void setPais(Pais pais) {
 		this.pais = pais;
 	}
+
+	public Ubicacion getUbicacionGeografica() {
+		return ubicacionGeografica;
+	}
+
+	public void setUbicacionGeografica(Ubicacion ubicacionGeografica) {
+		this.ubicacionGeografica = ubicacionGeografica;
+	}
+	
+
 }

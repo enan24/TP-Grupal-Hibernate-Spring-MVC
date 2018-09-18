@@ -9,7 +9,7 @@ public class Continente {
 @Id @GeneratedValue
 
 	private Long id;
-	private String continente;
+	private String nombre;
 	
 	public Long getId() {
 		return id;
@@ -19,11 +19,12 @@ public class Continente {
 		this.id = id;
 	}
 
-	public String getContinente() {
-		return continente;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setContinente(String continente) {
-		this.continente = continente;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
+	
 }

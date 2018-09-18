@@ -10,19 +10,9 @@ import javax.persistence.OneToOne;
 public class Ubicacion {
 @Id @GeneratedValue
     
-    private Long id;
 	private Double latitud;
 	private Double longitud;
-	
-	@OneToOne (cascade={CascadeType.ALL})
-	private Ciudad ciudad;
 
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public Double getLatitud() {
 		return latitud;
 	}
@@ -39,11 +29,4 @@ public class Ubicacion {
 		this.longitud = longitud;
 	}
 
-	public Ciudad getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(Ciudad ciudad) {
-		this.ciudad = ciudad;
-	}
 }

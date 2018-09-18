@@ -16,10 +16,9 @@ public class Pais {
 	private Long habitantes;
 	private String idioma;
 	private String capital;
-	private String continente;
 	
 	@ManyToOne (cascade= {CascadeType.ALL},fetch = FetchType.LAZY)
-	private Continente idContinente;
+	private Continente continente;
 	
 	public Long getId() {
 		return id;
@@ -27,11 +26,11 @@ public class Pais {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Continente getIdContinente() {
-		return idContinente;
+	public Continente getContinente() {
+		return continente;
 	}
-	public void setIdContinente(Continente idContinente) {
-		this.idContinente = idContinente;
+	public void setContinente(Continente continente) {
+		this.continente = continente;
 	}
 	public String getNombre() {
 		return nombre;
@@ -56,12 +55,6 @@ public class Pais {
 	}
 	public void setCapital(String capital) {
 		this.capital = capital;
-	}
-	public String getContinente() {
-		return continente;
-	}
-	public void setContinente(String continente) {
-		this.continente = continente;
 	}
 	
 }
