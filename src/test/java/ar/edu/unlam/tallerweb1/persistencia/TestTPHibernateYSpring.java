@@ -146,5 +146,39 @@ public class TestTPHibernateYSpring extends SpringTest {
 		
 		assertThat(listaPaises.size()).isEqualTo(3);
 	}
+	
+	@Test @Transactional @Rollback
+	public void testQueBuscaLasCiudadesDelHemisferioSur(){
+		
+		Ubicacion ubicacionCochabamba = new Ubicacion();
+		Ubicacion ubicacionHamburgo = new Ubicacion();
+		Ubicacion ubicacionHarare = new Ubicacion();
+		
+		ubicacionCochabamba.setLatitud(-17.3894997);
+		ubicacionHamburgo.setLatitud(53.5753212);
+		ubicacionHarare.setLatitud(-17.8277206);
+		
+		Ciudad Cochabamba = new Ciudad();
+		Ciudad Hamburgo = new Ciudad();
+		Ciudad Harare = new Ciudad();
+		
+		Cochabamba.setUbicacionGeografica(ubicacionCochabamba);
+		Hamburgo.setUbicacionGeografica(ubicacionHamburgo);
+		Harare.setUbicacionGeografica(ubicacionHarare);
+		
+		Session session = getSession();
+		
+		session.save(Cochabamba);
+		session.save(Hamburgo);
+		session.save(Harare);
+		
+		List <Ciudad> listaQueGuardaCiudadesUbicadasEnElHemisferioSur = getSession().createCriteria(Ciudad.class)
+				.createAlias("ubicacionGeografica", "ubicacionBuscada")
+				.add(Restrictions.lt("ubicacionBuscada.latitud",0.00))
+				.list();
+		
+		assertThat(listaQueGuardaCiudadesUbicadasEnElHemisferioSur.size()).isEqualTo(2);
+		
+	}
 
 }
