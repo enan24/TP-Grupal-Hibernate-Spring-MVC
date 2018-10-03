@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 public class Ciudad {
 @Id @GeneratedValue
 
+	private Long id;
 	private String nombre;
 	
 	@ManyToOne (cascade= {CascadeType.ALL},fetch = FetchType.LAZY)

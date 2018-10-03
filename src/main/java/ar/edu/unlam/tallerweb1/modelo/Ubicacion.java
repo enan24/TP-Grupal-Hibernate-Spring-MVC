@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 public class Ubicacion {
 @Id @GeneratedValue
     
+	private Long id;
 	private Double latitud;
 	private Double longitud;
 
